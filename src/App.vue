@@ -2,13 +2,14 @@
   <div id="app">
     <div class="header">
       <img width="24" height="24" alt="Vue logo" src="@/assets/logo.png">
-      <h2>Модуль курсы</h2>
+      <h2>
+        <router-link :to="{name: 'home'}">Модуль курсы</router-link>
+      </h2>
     </div>
 
     <nav>
-      <router-link>Статистика</router-link>
-      <router-link>Курс с id '123</router-link>
-
+      <router-link :to="{name: 'stat'}">Статистика</router-link>
+      <router-link :to="{name: 'course', params: {id: '123'}}">Курс</router-link>
     </nav>
     <router-view/>
   </div>
