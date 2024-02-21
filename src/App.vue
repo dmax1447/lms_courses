@@ -8,8 +8,20 @@
     </div>
 
     <nav>
-      <router-link :to="{name: 'stat'}">Статистика</router-link>
-      <router-link :to="{name: 'course', params: {id: '123'}}">Курс</router-link>
+      <div>
+        <router-link :to="{name: 'course', params: {id: 'id01'}}">Страница Курсы</router-link>
+      </div>
+      <div>
+        <router-link :to="{name: 'stat'}">Статистика</router-link>
+        <router-link :to="{name: 'assignment'}">Статистика:Задания</router-link>
+        <router-link :to="{name: 'quiz'}">Статистика:тесты</router-link>
+      </div>
+      <div>
+        <router-link :to="{name: 'check'}">Проверка</router-link>
+      </div>
+
+
+<!--      <router-link :to="{name: 'course', params: {id: '123'}}">Курс</router-link>-->
     </nav>
     <router-view/>
   </div>
@@ -20,6 +32,9 @@
 export default {
   name: 'App',
   components: {
+  },
+  created() {
+    console.log('this.$root.token', this.$root.token)
   }
 }
 </script>
@@ -37,7 +52,11 @@ export default {
   align-items: center;
 }
 nav {
-  display: flex;
-  gap: 10px;
+  & > div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
 }
 </style>
