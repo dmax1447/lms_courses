@@ -2,7 +2,6 @@
   <div >
     <h3>Корневая страница модуля</h3>
     <div>messages: {{messages}}</div>
-
   </div>
 </template>
 
