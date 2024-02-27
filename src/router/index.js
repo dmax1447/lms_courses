@@ -12,36 +12,30 @@ const routes = [
     name: 'home',
     component: HomePage,
     meta: { title: 'Курсы' },
-    // children: [
-    //   {
-    //     path: ':id',
-    //     name: 'course',
-    //     component: CoursePage
-    //   },
-    // ]
   },
   {
     path: '/check',
     name: 'check',
-    component: () => import('../view/CourseCheckPage.vue')
+    component: () => import('../view/CourseCheckPage.vue'),
+    meta: { title: 'Проверка курса', shouldAppearInSidebar: true },
   },
   {
     path: '/stat',
     name: 'stat',
     component: () => import('../view/StatisticPage.vue'),
-    meta: { title: 'Статистика' },
+    meta: { title: 'Статистика', shouldAppearInSidebar: true },
   },
   {
     path: '/stat/assignment',
     name: 'assignment',
     component: () => import('../view/StatisticAssignmentPage.vue'),
-    meta: { title: 'Задания' },
+    meta: { title: 'Задания', shouldAppearInSidebar: true },
   },
   {
     path: '/stat/quiz',
     name: 'quiz',
     component: () => import('../view/StatisticQuizPage.vue'),
-    meta: { title: 'Тесты' },
+    meta: { title: 'Тесты', shouldAppearInSidebar: true },
   },
   {
     path: '/course/:id',
@@ -56,5 +50,13 @@ const router = new VueRouter({
   routes
 })
 
+const sidebarRoutes = routes
+  .filter(v => v.meta?.shouldAppearInSidebar)
+  .map(({path, name, meta}) => ({path: `/${base}${path}`, name, meta}))
+const nav = {
+  base,
+  routes: sidebarRoutes
+}
+
 export default router
-export { routes }
+export { nav }

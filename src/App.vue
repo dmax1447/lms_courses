@@ -30,21 +30,22 @@
 
 <script>
 import {emitter} from '@lms/styleguide'
+import { nav } from "@/router";
 
 export default {
-  name: 'App',
+  name: 'CoursesApp',
   components: {
   },
   methods: {
     hideMenuItem() {
-      emitter.emit('sidebar:hide_item', {id: 'assignment'})
+      emitter.emit('sidebar:hide_item', {rootId: 'courses', name: 'assignment'})
     },
     disableMenuItem() {
-      emitter.emit('sidebar:disable_item', {id: 'assignment'})
+      emitter.emit('sidebar:disable_item', {rootId: 'courses', name: 'assignment'})
     }
   },
   created() {
-
+    emitter.emit('app:set_nested_nav', nav)
   }
 }
 </script>
